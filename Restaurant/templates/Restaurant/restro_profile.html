@@ -1,0 +1,112 @@
+{% extends "Client/base.html" %}{% block content %}
+
+<div class="container">
+    <div class="rest-box">
+
+        <h1>Restaurant Profile</h1>
+        <div class="und" style="height: 5px; background-color: red; max-width: 250px; margin-bottom: 50px;"></div>
+
+        <span>
+        {% if request.user == r.user %}
+            <a href="{% url 'res-profile-edit' r.pk %}" style="color: #333"><i class="far fa-edit" alt="ed"></i>Edit</a>
+            <span style="margin-left: 10px;">|</span>
+        <a href="{% url 'res-profile-delete' r.pk %}" style="color: #333; margin-left: 10px;"><i class="fa-solid fa-trash"></i>Delete</a> {% endif %}
+        </span>
+        <div class="divprofile_parent">
+
+            <div class="row">
+                <div class="col-lg-6">
+                    {% if r.pic %}
+                    <div class="divprofile">
+                        <p class="resprofile_label"></p>
+                        <img src='{{ r.pic.url }}' alt="{{ r.name.0 }}">
+                    </div>
+                    {% endif %}
+                </div>
+                <div class="col-lg-6">
+
+                    {% if r.name %}
+
+                    <div class="divprofile">
+                        <p class="resprofile_label"></p>
+                        <p class="resprofile_data" style="font-size: 25px; color: black;">{{ r.name }}</p>
+                    </div>
+                    {% endif %} {% if r.lic %}
+                    <div class="divprofile">
+                        <p class="resprofile_label"></p>
+                        <p class="resprofile_data">{{ r.lic }}</p>
+                    </div>
+                    {% endif %} {% if r.email %}
+                    <div class="divprofile">
+                        <p class="resprofile_label"></p>
+                        <p class="resprofile_data">{{ r.email }}</p>
+                    </div>
+                    {% endif %} {% if r.phone %}
+                    <div class="divprofile">
+                        <p class="resprofile_label"></p>
+                        <p class="resprofile_data">{{ r.phone }}</p>
+                    </div>
+                    {% endif %} {% if r.address %}
+                    <div class="divprofile">
+                        <p class="resprofile_label"></p>
+                        <p class="resprofile_data">{{ r.address }}</p>
+                    </div>
+                    {% endif %} {% if r.cuisine %}
+                    <div class="divprofile">
+                        <p class="resprofile_label"></p>
+                        <p class="resprofile_data">Cuisine: {{ r.cuisine }}</p>
+                    </div>
+                    {% endif %} {% if r.nv %}
+                    <div class="divprofile">
+                        <p class="resprofile_label"></p>
+                        <p class="resprofile_data">{% if r.nv == "1" %}<img src="/media/icons/veg.png" style="height:20px;max-width:20px;">{% endif %}</p>
+                        <p class="resprofile_data">{% if r.nv == "2" %}<img src="/media/icons/nonveg.png" style="height:20px;max-width:20px;">{% endif %}</p>
+                        <p class="resprofile_data">{% if r.nv == "3" %}<img src="/media/icons/both.png" style="height:20px;max-width:40px;">{% endif %}</p>
+                    </div>
+                    {% endif %} {% if r.rate %}
+                    <div class="divprofile">
+                        <p class="resprofile_label"></p>
+                        <p class="resprofile_data">{{ r.rate }}</p>
+                    </div>
+                    {% endif %}
+
+                </div>
+            </div>
+        </div>
+        <div style="margin-top: 15px;">
+            <a href="{% url 'menu' r.pk %}" style="color: #333;"><i class="fas fa-hamburger"></i> View Menu</a> {% if r.user == request.user %}
+            <span style="margin-left: 10px;">|</span>
+            <a href="{% url 'create-menu' r.pk %}" style="margin-left: 10px; color: #333;"><i class="fa fa-add"></i> Add Menu Item</a> {% endif %}
+        </div>
+        <div>
+            {% for v in rr %}
+            <div>
+                <p>{{ v.user.profile.name }}</p>
+                <p>{{ v.review }}</p>
+            </div>
+            {% endfor %}
+        </div>
+
+    </div>
+</div>
+
+<style>
+    img {
+        width: -webkit-fill-available;
+        border-radius: 10px;
+    }
+    
+    .resprofile_data {
+        color: gray;
+    }
+    
+    body {
+        height: 100vh;
+    }
+    
+    footer {
+        position: fixed!important;
+    }
+</style>
+
+{% endblock %}

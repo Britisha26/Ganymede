@@ -1,0 +1,83 @@
+<nav>
+    <a href="/" style="text-decoration: none; color: white;">
+        <p class="logo">
+            PlatePal
+        </p>
+    </a>
+    <ul>
+        <div>
+            <li><a class="navlinks" href="{% url 'home' %}"><i class="fa-solid fa-house"></i> Home</a></li>
+            <li><a class="navlinks" href="{% url 'list-res' %}"><i class="fa-solid fa-utensils"></i> Restaurants</a></li>
+            <li><a class="navlinks" href="{% url 'about' %}"><i class="fa-solid fa-circle-info"></i> About</a></li>
+            <li><a class="navlinks" href="{% url 'contact' %}"><i class="fa-solid fa-user"></i> Contact Us</a></li>
+        </div>
+    </ul>
+</nav>
+
+<style>
+    nav {
+        background-image: linear-gradient(to right, rgb(118, 0, 0), rgb(204, 1, 1));
+        background-blend-mode: darken;
+        color: white;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 10px 50px;
+        box-shadow: 0 0 10px 5px gray;
+        font-family: 'Courier New', Courier, monospace;
+        z-index: 100;
+    }
+    
+    .logo {
+        font-size: 30px;
+        font-family: 'French Script mt';
+        position: absolute;
+        /* float: right;
+        padding-right: 30px;*/
+    }
+    
+    nav ul {
+        display: inline;
+        list-style-type: none;
+        padding: 10px;
+        width: fit-content;
+        margin-left: auto;
+        margin-bottom: 0;
+    }
+    
+    nav li {
+        padding: 10px 15px;
+        display: inline;
+        font-size: 20px;
+        font-family: 'Times New Roman', Times, serif
+    }
+    
+    nav li:hover {
+        background-color: rgba(177, 100, 91, 0.941);
+        cursor: pointer;
+        /*text-decoration: underline;*/
+        transition: 0.3s;
+    }
+    
+    .navlinks {
+        text-decoration: none;
+        color: rgba(255, 255, 255);
+        font-family: sans-serif;
+    }
+    
+    .navlinks:hover {
+        color: aliceblue;
+    }
+    
+    nav p {
+        margin-bottom: 0;
+    }
+    
+    body {
+        margin: 0;
+        padding: 0;
+    }
+</style>

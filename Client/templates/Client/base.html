@@ -1,0 +1,22 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>
+        {% block head_title %} {% endblock %} </title>
+    {% block extra_head %} {% endblock %}
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <script src="https://kit.fontawesome.com/0fb6f635f2.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+</head>
+
+<body>
+    {% include 'Client/nav.html' %} {% block content %} {% endblock content %} {% include 'Client/footer.html' %}
+</body>
+
+</html>

@@ -1,0 +1,52 @@
+{% extends "account/base.html" %} {% load i18n %} {% block head_title %}{% trans "Signup" %}{% endblock %} {% block content %}
+
+<div class="container">
+    <div class="signin-box">
+        <h1>{% trans "Sign Up" %}</h1>
+
+        <p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
+
+        <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
+            {% csrf_token %} {{ form.as_p }} {% if redirect_field_value %}
+            <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" /> {% endif %}
+            <button type="submit">{% trans "Sign Up" %} &raquo;</button>
+        </form>
+    </div>
+</div>
+
+<style>
+    form button {
+        margin-top: 20px;
+    }
+    
+    .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 90vh;
+    }
+    
+    .signin-box {
+        padding: 50px;
+        box-shadow: 0 0 10px 5px gray;
+        border-radius: 10px;
+        backdrop-filter: blur(10px);
+        color: white;
+    }
+    
+    form input {
+        border: 1px solid #ced4da;
+        padding: 10px;
+        border-radius: 5px;
+        margin-left: 10px;
+    }
+    
+    body {
+        background-image: linear-gradient(to bottom, rgba(41, 41, 41, 0.52), rgba(33, 33, 33, 0.73)), url('/media/frontend-images/home.jpg');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+</style>
+
+{% endblock %}

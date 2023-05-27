@@ -1,0 +1,41 @@
+{% extends "Client/base.html" %} {% block content %}
+
+<div class="container">
+    <div class="ord-box">
+        <h1 style="text-align: center">Thank you for ordering</h1>
+        <p style="text-align: center">Order Details</p>
+
+        <div class="row justify-content-center mt-5">
+            <div class="col-md-5 col-sm-12 text-center">
+                <h3 class="pb-3">Order Summary:</h3>
+                {% for item in items.all %}
+                <p>{{ item.name }} <span class="pl-3">{{ item.price }}</span></p>
+                {% endfor %}
+
+                <p class="font-weight-bold pt-4">Total: {{ price }}</p>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .container {
+        display: flex;
+        justify-content: center;
+    }
+    
+    .ord-box {
+        box-shadow: 0 0 10px 5px gray;
+        padding: 50px;
+        width: fit-content;
+        text-align: center;
+        margin-top: 130px;
+        border-radius: 20px;
+    }
+    
+    footer {
+        position: fixed!important;
+    }
+</style>
+{% endblock content %}

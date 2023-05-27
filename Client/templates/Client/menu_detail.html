@@ -1,0 +1,73 @@
+{% extends "Client/base.html" %}{% block content %}
+
+<div class="container">
+    <div class="det-box">
+        <div>
+            {% if res.user == request.user %}
+            <a href="{% url 'menuitem-edit' res.pk menu.pk %}"><i class="far fa-edit" alt="ed"></i>Edit Menu Item</a>
+            <a href="{% url 'menuitem-delete' res.pk menu.pk %}"><i class="fa-solid fa-trash"></i>Delete Menu Item</a> {% endif %}
+        </div>
+
+        <div class="row">
+            <div class="col-lg-6">
+                <img src="{{ menu.foodpic.url }}">
+            </div>
+            <div class="col-lg-6" style="display: flex; flex-direction: column; justify-content: center;">
+                <p style="font-size: 28px; font-weight: 600; margin-bottom: 0px;">
+                    {{ menu.name }}
+                </p>
+                {% if res.name %}
+                <p style="margin-top:10px; margin-bottom: 30px;">
+                    by {{ res.name }}
+                </p>
+                {% endif %}
+                <div class="links">
+                    <a href="{% url 'menu' res.pk %}">View Menu</a>
+                    <a href="{% url 'res-profile' res.pk %}" style="margin-left: 10px;">View the Restaurant</a>
+                </div>
+                {% if menu.price %}
+                <p>
+                    Price: ₹{{ menu.price }}
+                </p>
+                {% endif %} {% if menu.available %}
+                <p>Status: available</p>
+                {% else %}
+                <p>Status: currently unavailable</p>
+                {% endif %} {% if menu.nv %} {% if menu.nv == "1" %}<img src="/media/icons/veg.png" style="height:20px;max-width:20px;">{% endif %} {% if menu.nv == "2" %}
+                <img src="/media/icons/nonveg.png" style="height:20px;max-width:20px;">{% endif %} {% if menu.nv == "3" %}
+                <img src="/media/icons/both.jpg" style="height:20px;max-width:40px;">{% endif %} {% endif %} {% if menu.ingredients %}
+                <p style="margin-top: 10px;">Ingredients: {{ menu.ingredients }}</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .container {
+        padding: 150px 0;
+    }
+    
+    .det-box {
+        margin: 0 auto;
+    }
+    
+    .det-box img {
+        width: -webkit-fill-available;
+        border-radius: 20px;
+    }
+    
+    .links {
+        margin-bottom: 20px;
+    }
+    
+    .links a {
+        color: black;
+        text-decoration: underline;
+    }
+    
+    footer {
+        position: fixed!important;
+    }
+</style>
+{% endblock content %}

@@ -1,0 +1,78 @@
+{% extends 'Client/base.html' %} {% block content %}
+<style>
+    h1,
+    form {
+        text-align: center;
+    }
+</style>
+<div class="container">
+    <div class="form-div">
+        <h2>Feedback</h2>
+        <div class="parent">
+            <form method="POST" action="{% url 'contact' %}">
+                {% csrf_token %}{% for f in form %}
+                <div class="child">
+                    <p class="label-ele">{{ f.label_tag }}</p> {{ f }}</div> {% endfor %}
+                <div class="child" style="display:flex;justify-content:center;"><button type="submit">Submit</button></div>
+                {% if is_submitted %}
+                <script>
+                    alert("Submitted Successfully")
+                </script>
+                {% endif %}
+            </form>
+        </div>
+    </div>
+</div>
+
+<style>
+    .container {
+        display: flex;
+        justify-content: center;
+        padding-top: 50px;
+        height: 90vh;
+    }
+    
+    .form-div {
+        max-width: 500px;
+        display: flex;
+        flex-direction: column;
+        margin-top: 50px;
+        justify-content: center;
+        min-width: 500px;
+        height: fit-content;
+        box-shadow: 0 0 5px 1px gray;
+        padding: 30px 50px;
+        backdrop-filter: blur(10px);
+        color: white;
+    }
+    
+    form {
+        text-align: start;
+    }
+    
+    .parent button {
+        margin: 20px 0;
+    }
+    
+    .parent input,
+    .parent textarea {
+        padding: 10px;
+        border: 1px solid #ced4da;
+        border-radius: 5px;
+        text-align: left;
+    }
+    
+    .label-ele {
+        margin-bottom: 0;
+        margin-top: 10px;
+    }
+    
+    body {
+        background-image: linear-gradient(to bottom, rgba(41, 41, 41, 0.52), rgba(33, 33, 33, 0.73)), url('/media/frontend-images/home.jpg');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+</style>
+
+{% endblock content %}

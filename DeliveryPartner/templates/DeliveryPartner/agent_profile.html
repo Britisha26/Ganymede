@@ -1,0 +1,79 @@
+{% extends "Client/base.html" %}{% block content %}
+
+<div class="container">
+    <div class="pro-box">
+        <h1 style="margin-bottom: 20px;">Delivery Agent Profile</h1>
+        <span>
+            {% if request.user == a.user %}
+               <a href="{% url 'agent-profile-edit' a.pk %}" style="color: #333; margin-right: 10px;"><i class="far fa-edit" alt="ed"></i> Edit</a>
+               <a href="{% url 'agent-profile-delete' a.pk %}" style="color: #333; margin-left: 10px;"><i class="fa-solid fa-trash"></i> Delete</a>
+            {% endif %}
+        </span>
+        <div class="divprofile_parent" style="margin-top: 30px;">
+
+            {% if a.pic %}
+            <div class="divprofile">
+                <p class="resprofile_label"></p>
+                <img src='{{ a.pic.url }}' alt="{{ a.name.0 }}">
+            </div>
+            {% endif %} {% if a.name %}
+
+            <div class="divprofile">
+                <p class="resprofile_label"></p>
+                <p class="resprofile_data"><b>{{ a.name }}</b></p>
+            </div>
+            {% endif %} {% if a.vehicle_license %}
+            <div class="divprofile">
+                <p class="resprofile_label"></p>
+                <p class="resprofile_data">{{ a.vehicle_license }}</p>
+            </div>
+            {% endif %} {% if a.email %}
+            <div class="divprofile">
+                <p class="resprofile_label"></p>
+                <p class="resprofile_data">{{ a.email }}</p>
+            </div>
+            {% endif %} {% if a.phone %}
+            <div class="divprofile">
+                <p class="resprofile_label"></p>
+                <p class="resprofile_data">{{ a.phone }}</p>
+            </div>
+            {% endif %} {% if a.rate %}
+            <div class="divprofile">
+                <p class="resprofile_label"></p>
+                <p class="resprofile_data">{{ a.rate }}</p>
+            </div>
+            {% endif %}
+        </div>
+        <div>
+            {% for v in ar %}
+            <div>
+                <p>{{ v.user.profile.name }}</p>
+                <p>{{ v.review }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<style>
+    .container {
+        padding: 100px 0 80px 0;
+    }
+    
+    .pro-box {
+        box-shadow: 0 0 10px 3px gray;
+        width: fit-content;
+        padding: 50px;
+        border-radius: 20px;
+        text-align: center;
+        margin: 0 auto;
+    }
+    
+    .pro-box img {
+        width: 200px;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 100%;
+    }
+</style>
+{% endblock %}

@@ -1,0 +1,135 @@
+{% extends "Client/base.html" %}{% block content %}
+
+<div class="container">
+    <div class="prof-box">
+        <div>
+            <h3 class="profile_username" style="text-align: center;">{{ c.user.username }}</h3>
+
+            {% if request.user == c.user %}
+            <a href="{% url 'profile-edit' profile.pk %}" style="color: white; display: block; margin: 0 auto; width: fit-content;"><i class="far fa-edit" alt="ed"></i></a> {% endif %} {% if c.picture %}
+            <div class="divprofile" style="justify-content: center; display: flex; margin: 30px 0;">
+                <img style="width: 150px; height: 150px; object-fit: cover; border-radius:100%;" src='{{ c.picture.url }}' alt="{{ c.name.0 }}">
+            </div>
+            {% endif %}
+            <div class="row">
+                <div class="col-lg-4">
+                    <p class="profile_info_asked">Name: </p>
+                </div>
+                <div class="col-lg-8">
+                    {% if c.name %}
+                    <p class="profile_info_given">{{ c.name }}</p>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    <p class="profile_info_asked">Phone: </p>
+                </div>
+                <div class="col-lg-8">
+                    {% if c.phone %}
+                    <p class="profile_info_given">{{ c.phone }}</p>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    <p class="profile_info_asked">Email: </p>
+                </div>
+                <div class="col-lg-8">
+                    {% if c.email %}
+                    <p class="profile_info_given">{{ c.email }}</p>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    <p class="profile_info_asked">Street: </p>
+                </div>
+                <div class="col-lg-8">
+                    {% if c.street %}
+                    <p class="profile_info_given">{{ c.street }}</p>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    <p class="profile_info_asked">Area: </p>
+                </div>
+                <div class="col-lg-8">
+                    {% if c.area %}
+                    <p class="profile_info_given">{{ c.area }}</p>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    <p class="profile_info_asked">City: </p>
+                </div>
+                <div class="col-lg-8">
+                    {% if c.city %}
+                    <p class="profile_info_given">{{ c.city }}</p>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    <p class="profile_info_asked">State: </p>
+                </div>
+                <div class="col-lg-8">
+                    {% if c.state %}
+                    <p class="profile_info_given">{{ c.state }}</p>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    <p class="profile_info_asked">Pincode: </p>
+                </div>
+                <div class="col-lg-8">
+                    {% if c.pincode %}
+                    <p class="profile_info_given">{{ c.pincode }}</p>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    <p class="profile_info_asked">Allergy: </p>
+                </div>
+                <div class="col-lg-8">
+                    {% if c.allergy %}
+                    <p class="profile_info_given">{{ c.allergy }}</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    body {
+        background-image: linear-gradient(to bottom, rgba(41, 41, 41, 0.52), rgba(33, 33, 33, 0.73)), url('/media/frontend-images/home.jpg');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        color: white;
+    }
+    
+    .container {
+        display: flex;
+        justify-content: center;
+    }
+    
+    .prof-box {
+        height: fit-content;
+        margin: auto;
+        padding: 50px;
+        backdrop-filter: blur(10px);
+        min-width: 500px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px 3px white;
+        margin: 150px 0 70px 0;
+        text-align: center;
+    }
+</style>
+
+{% endblock content %}

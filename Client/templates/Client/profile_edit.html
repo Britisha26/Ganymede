@@ -1,0 +1,74 @@
+{% extends "Client/base.html" %}{% block content %}
+
+<div class="container">
+    <div class="edit-box">
+        <div>
+            <h1 style="text-align: center; margin-bottom: 40px;">Update your profile </h1>
+        </div>
+
+        <div>
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %} {% for f in form %}
+                <div class="row" style="margin-top: 20px;">
+                    <div class="col-lg-4">
+                        {{ f.label_tag }}
+                    </div>
+                    <div class="col-lg-8">
+                        {{ f }}
+                    </div>
+                </div>
+                {% endfor %}
+                <div style="margin-top: 30px; display: flex; justify-content: center;"><button id="b1">Submit</button></div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<style>
+    body {
+        background-image: linear-gradient(to bottom, rgba(41, 41, 41, 0.52), rgba(33, 33, 33, 0.73)), url('/media/frontend-images/home.jpg');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        color: white;
+    }
+    
+    .edit-box {
+        margin: 100px 0;
+        backdrop-filter: blur(10px);
+        padding: 50px;
+        border-radius: 10px;
+        width: 800px;
+        box-shadow: 0 0 10px 3px white;
+    }
+    
+    .edit-box input,
+    .edit-box textarea {
+        border-radius: 10px;
+        padding: 10px;
+        box-shadow: 0;
+        border: 1px solid #ced4da;
+    }
+    
+    .edit-box input,
+    textarea,
+    select {
+        margin-left: 20px;
+        min-width: 300px;
+    }
+    
+    .container {
+        display: flex;
+        justify-content: center;
+    }
+    
+    input[type="checkbox"] {
+        min-width: 0px;
+    }
+    
+    input[name="phone_0"],
+    input[name="phone_1"] {
+        min-width: 0px;
+    }
+</style>
+{% endblock content %}

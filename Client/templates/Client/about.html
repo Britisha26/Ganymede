@@ -1,0 +1,52 @@
+{% extends 'Client/base.html' %} {% block content %}
+<style>
+    h1,
+    p {
+        text-align: center;
+    }
+</style>
+<div class="container">
+    <h1 style="margin-top: 40px;">
+        About Us
+        <div style="height: 4px; background-color: red; max-width: 100px; margin: 10px auto 60px auto;"></div>
+    </h1>
+    <div class="row">
+        <div class="col-lg-4">
+            <img src="/media/frontend-images/about.jpg" alt="">
+        </div>
+        <div class="col-lg-8">
+            <p> PlatePal seeks to promptly deliver food to you from Restaurants nearby.
+                <br>We're here to satisfy all your food cravings</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed voluptatibus in eum repellat pariatur sapiente saepe doloremque! Voluptatibus similique est beatae possimus obcaecati ea placeat esse aliquid assumenda qui omnis quod minus numquam
+                deleniti, eos ullam inventore odio a pariatur officia laudantium molestiae nisi quidem? Incidunt rem. <br><br> voluptas nostrum omnis eligendi quos dolorem commodi optio quisquam laborum quod excepturi beatae tempore illo nesciunt dolor
+                quo rerum. Et molestias voluptas sint reiciendis illo incidunt eius corporis corrupti obcaecati adipisci quia quibusdam expedita, unde nesciunt. Nobis qui alias maiores at beatae, minus tempore dolore voluptates magni dolor, minima labore
+                eaque sequi fuga!</p>
+            <!-- <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tenetur nobis aperiam saepe eum quos natus corrupti ut! Mollitia laboriosam, nam aperiam quae magnam nobis fuga officiis facere eius unde. Ex quae velit aspernatur unde possimus debitis iure perspiciatis magnam veritatis, mollitia culpa voluptate placeat facilis voluptas fugiat dolores, voluptatum obcaecati, porro temporibus tempore! Sed rerum quis tempore sapiente repudiandae? Dolores architecto quidem praesentium, voluptatibus suscipit illum doloribus, iusto ea animi explicabo eius in velit facere minus deleniti incidunt. Perferendis voluptatum molestiae quae animi sint labore deleniti obcaecati officia placeat sit. Sapiente qui eum accusamus sunt, voluptas quisquam nesciunt aliquid architecto.</p> -->
+        </div>
+    </div>
+</div>
+
+<style>
+    body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 100vh;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+    }
+    
+    .container {
+        padding: 70px 0;
+    }
+    
+    .col-lg-4 img {
+        width: -webkit-fill-available;
+        border-radius: 10px;
+    }
+    
+    .col-lg-8 p {
+        text-align: start;
+        margin-top: 20px;
+    }
+</style>
+{% endblock %}

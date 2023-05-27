@@ -1,0 +1,85 @@
+{% extends 'Client/base.html' %} {% block title %} Ganymede {% endblock %} {% block content %}
+
+<div class="home-body">
+
+    <div class="container">
+        <h1> Online Food Delivery Service </h1>
+        <h2>PlatePal - Your Pal</h2><br>
+        <div class="placean">
+            <h3>Place an Order</h3>
+            <a href="{% url 'list-res' %}"><button style="margin-top: 5px;">Order Now!</button></a>
+        </div>
+        <div style="margin: 0 auto; width: fit-content; text-align:center;">
+            {% if a %}
+            <a href="{% url 'account_login' %}" class="btn btn-light" id="b1" style="margin-right: 25px;"><i class="fa-solid fa-right-to-bracket"></i> Login</a>
+            <a href="{% url 'account_signup' %}" class="btn btn-light" id="b1" style="margin-right: 25px;"><i class="fa-solid fa-right-to-bracket"></i> Register</a> {% endif %} {% if not a %}
+            <a href="{% url 'account_logout' %}" class="btn btn-light" id="b1" style="margin-right: 25px;">Logout</a> {% endif %} {% if c == '1' %}
+            <a class="btn btn-light" href="{% url 'profile' r.pk %}">Profile</a> {% endif %} {% if c == '2' %}
+            <a class="btn btn-light" href="{% url 'res-profile' r %}">Profile</a> {% endif %} {% if c == '3' %}
+            <a class="btn btn-light" href="{% url 'agent-profile' r %}">Profile</a> {% endif %}
+            <br> {% if c == '1' %}
+            <a href="{% url 'create-res' %}"><i class="fa-solid fa-user-plus"></i> Own a Restaurant? Join now</a><br>
+            <a href="{% url 'create-agent' %}"><i class="fa-solid fa-user-plus"></i> Want to be delivery partner? Join now</a> {% endif %}
+            <br>
+            <a href="{% url 'list-agent' %}">Our Delivery Partners</a> </div>
+    </div>
+
+</div>
+
+
+<style>
+    h1,
+    h2,
+    h3,
+    a {
+        text-align: center;
+        color: white;
+        text-decoration: none;
+    }
+    
+    .placean {
+        max-width: 400px;
+        margin: 20px auto;
+        display: flex;
+        flex-direction: column;
+        padding: 50px;
+        box-shadow: 0 0 5px 1px white;
+        border-radius: 10px;
+    }
+    
+    button {
+        margin: auto;
+        display: flex;
+    }
+    
+    .home-body {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    
+    body {
+        background-image: linear-gradient(to bottom, rgba(41, 41, 41, 0.52), rgba(33, 33, 33, 0.73)), url('/media/frontend-images/home.jpg');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    
+    .container {
+        padding: 30px;
+        color: white;
+    }
+    
+    .container .btn {
+        min-width: 150px;
+    }
+    
+    footer {
+        position: absolute!important;
+        bottom: 0;
+        left: 0;
+    }
+</style>
+
+{% endblock content %}

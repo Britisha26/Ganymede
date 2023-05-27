@@ -1,0 +1,39 @@
+.feedbackform {
+    text-align: center;
+    resize: none;
+    margin: 0 auto;
+}
+
+.back-btn {
+    text-decoration: none;
+    padding: 15px 30px;
+    background-image: linear-gradient(to right, rgb(77, 0, 0), red);
+    color: white;
+    text-align: center;
+}
+
+.back-btn:hover {
+    text-decoration: none;
+    color: white;
+}
+
+button {
+    background-image: linear-gradient(to right, rgb(77, 0, 0), red);
+    margin: 10px;
+    padding: 15px 45px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    box-shadow: 0 0 20px #eee;
+    border-radius: 10px!important;
+    border: 0;
+    display: block;
+}
+
+button:hover {
+    background-position: right center;
+    color: #fff;
+    text-decoration: none;
+}

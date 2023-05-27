@@ -1,0 +1,107 @@
+{% extends 'Client/base.html' %} {% block content %}
+<div class="container">
+    <form method="post">
+        {% csrf_token %}
+        <div class="menu-box">
+
+            <a href="{% url 'res-profile' res.pk %}" class="back-btn" style="margin: 10px 0;">View the Restaurant</a>
+            <div class="row">
+                <div class="col-lg-4">
+                    <img src="{{ res.pic.url }}" style="width: -webkit-fill-available; border-radius: 10px;">
+                </div>
+                <div class="col-lg-8">
+                    {% if res.name %}
+                    <h1 style="margin-top:30px;">
+                        {{ res.name }}
+                    </h1>
+                    {% endif %} {% if res.cuisine %}
+                    <p>
+                        Cuisine: {{ res.cuisine }}
+                    </p>{% endif %} {% if res.rating %}
+                    <p>rating {{ res.rating }}
+                    </p>{% endif %}
+                    <div class="divprofile">
+                        {% if res.nv %}
+                        <p class="resprofile_label"></p>
+                        <p class="resprofile_data">{% if res.nv == "1" %}<img src="/media/icons/veg.png" style="height:20px;max-width:20px;">{% endif %}</p>
+                        <p class="resprofile_data">{% if res.nv == "2" %}<img src="/media/icons/nonveg.png" style="height:20px;max-width:20px;">{% endif %}</p>
+                        <p class="resprofile_data">{% if res.nv == "3" %}<img src="/media/icons/both.png" style="height:20px;max-width:40px;">{% endif %}</p>
+                        {% endif %}
+                    </div>
+                    <p>
+                        Address {{ res.address }}
+                    </p>
+                </div>
+            </div>
+            {% if res.user == request.user %}
+            <div>
+                <a href="{% url 'create-menu' res.pk %}">Add Menu Item</a>
+            </div>
+            {% endif %} {% if menu.count == 0 %} {% if menu.res.user == request.user %}
+            <p>Welcome! Add items to view Menu</p>
+            {% else %}
+            <p>The Restaurant has not uploaded their menu yet... Stay tuned!</p>
+            {% endif %} {% endif %}{% if menu.count != 0 %}
+            <h2 style="text-align: center; margin-top: 50px;">Products</h2>
+            <div class="underline" style="height: 4px; background-color: red; width: 150px; margin: 0 auto; margin-top: 20px;"></div>
+            <div class="row" style="margin-top: 50px;">
+                {% for i in menu %}
+                <div class="col-lg-4">
+                    <div class="card">
+
+                        <a href="{% url 'menu-detail' res.pk i.pk %}">
+
+                            <div class="card-img-top">
+                                <img src="{{ i.foodpic.url }}">
+                            </div>
+
+                        </a>
+                        <div class="card-body">
+                            <p>
+                                <b> {{ i.name }} </b>
+                            </p>
+                            {% if i.price %}
+                            <p>
+                                Price: ₹{{ i.price }}
+                            </p>{% endif %} {% if i.available %}
+                            <p>status: available</p>
+                            {% else %}
+                            <p>status: currently unavailable</p>
+                            {% endif %} {% if i.nv %}{% if i.nv == "1" %}<img src="/media/icons/veg.png" style="height:20px;max-width:20px;">{% endif %} {% if i.nv == "2" %}
+                            <img src="/media/icons/nonveg.png" style="height:20px;max-width:20px;">{% endif %} {% if i.nv == "3" %}
+                            <img src="/media/icons/both.png" style="height:20px;max-width:40px;">{% endif %} {% endif %} {% if i.available %}
+                            <br> &nbsp &nbsp &nbsp
+                            <input type="checkbox" name="items[]" class="form-check-input" value="{{ i.pk }}">
+                            <label class="form-check-label">{{ i.name }}</label> {% endif %}
+                            <br> {% if res.user == request.user %}
+                            <a href="{% url 'menuitem-edit' res.pk i.pk %}">Edit Menu Item</a>
+                            <a href="{% url 'menuitem-delete' res.pk i.pk %}">Delete Menu Item</a> {% endif %}</div>
+                    </div>
+                    <br>
+                </div>
+                {% endfor %}
+
+            </div>
+            {% endif %}
+        </div>
+        <div>
+            {% csrf_token %}{% for f in form %} {{ f.label_tag }}{{ f }} {% endfor %}
+            <button type="submit">Submit</button>
+    </form>
+    </div>
+    {% if e != 0 %}
+    <div>Your Order has not been processed because the details are not valid {{ e }}</div> {% endif %}
+</div>
+
+<style>
+    .menu-box {
+        margin: 100px 0;
+    }
+    
+    .col-lg-4 img {
+        height: 300px;
+        width: -webkit-fill-available;
+        object-fit: cover;
+    }
+</style>
+{% endblock content %}

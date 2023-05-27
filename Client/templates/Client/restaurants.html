@@ -1,0 +1,52 @@
+{% extends "Client/base.html" %}{% block content %}
+<style>
+    h1 {
+        margin-left: 25px;
+        margin-top: 20px;
+        margin-bottom: 0;
+    }
+    
+    .res-box {
+        margin: 100px 0;
+    }
+    
+    .card {
+        border-radius: 20px;
+        overflow: hidden;
+    }
+    
+    .card:hover {
+        box-shadow: 0 0 5px 2px gray;
+        transition: 0.3s;
+        border: 0;
+    }
+    
+    .card
+</style>
+
+<div class="container">
+    <div class="res-box">
+        <h1>Choose from available restaurants</h1>
+        <div class="row" style="margin: 40px 0;">
+            {% for r in res %}
+            <div class="col-lg-4">
+                <div class="card">
+                    <a href="{%  url 'menu' r.pk %}" style="color:black;text-decoration:none">
+                        <div class="card-img-top"><img src="{{ r.pic.url }}" style="height: 300px; object-fit: cover; width: -webkit-fill-available;"></div>
+                        <div class="card-body">
+                            <div><span style="font-size:25px;">{{ r.name }} </span>{% if r.nv %}
+                                <p class="resprofile_data">{% if r.nv == "1" %}<img src="/media/icons/veg.png" style="height:20px;max-width:20px;">{% endif %}</p>
+                                <p class="resprofile_data">{% if r.nv == "2" %}<img src="/media/icons/nonveg.png" style="height:20px;max-width:20px;">{% endif %}</p>
+                                <p class="resprofile_data">{% if r.nv == "3" %}<img src="/media/icons/both.png" style="height:20px;max-width:40px;">{% endif %}</p>
+
+                                {% endif %}<br> <span style="font-size:15px;">Address: {{ r.address }}</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock content %}

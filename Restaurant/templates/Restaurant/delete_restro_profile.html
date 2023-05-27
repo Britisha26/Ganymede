@@ -1,0 +1,62 @@
+{% extends "Client/base.html" %} {% block content %}
+
+<div class="container">
+    <div class="del-box">
+        <a href="{% url 'res-profile' res.pk %}">Restaurant<i class="fa-solid fa-users"></i></a>
+        <div>
+            <h1>Delete Restaurant Profile</h1>
+        </div>
+        <div style="margin-bottom: 10px; display: flex; justify-content: center; margin: 30px 0;">
+            <img src="{{ res.pic.url }}">
+        </div>
+        <p>
+            {{ res.name }}
+        </p>
+        <p>
+            {{ res.address }}
+        </p>
+        <div>
+            <form method="POST">
+                {% csrf_token %}
+                <h6>Are you sure you want to remove this restaurant permanently?</h6>
+                <div style="margin-top: 20px; display: flex; justify-content: center;">
+                    <button type="submit" id="b1">Delete</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<style>
+    .del-box {
+        padding: 40px;
+        box-shadow: 0 0 10px 5px gray;
+        border-radius: 10px;
+        width: fit-content;
+        margin: 0 auto;
+        text-align: center;
+    }
+    
+    .del-box img {
+        width: 300px;
+        border-radius: 10px;
+    }
+    
+    body {
+        height: 80vh;
+    }
+    
+    footer {
+        position: fixed!important;
+        bottom: 0;
+    }
+    
+    .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 100vh;
+    }
+</style>
+
+{% endblock %}

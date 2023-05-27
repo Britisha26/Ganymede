@@ -1,0 +1,53 @@
+{% extends "Client/base.html" %} {% block content %}
+
+<div class="container">
+    <div class="del-box">
+        <h1>Delete Menu Item</h1>
+        <div class="links">
+            <a href="{% url 'res-profile' object.res.pk %}">Back to Restaurant</a>
+            <a href="{% url 'menu' object.pk %}">Back to Menu</a>
+        </div>
+        <div>
+            <img src="{{ object.foodpic.url }}">
+            <p style="margin-top: 20px; margin-bottom: 10px;">{{ object.name }}</p>
+            <p>{{ object.price }}</p>
+        </div>
+        <div>
+            <form method="POST">
+                {% csrf_token %}
+                <h6>Are you sure you want to delete this menu item?</h6>
+                <div style="display: flex; justify-content: center; margin-top: 20px;">
+                    <button type="submit" id="b1">Delete</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<style>
+    img {
+        width: 250px;
+    }
+    
+    .del-box {
+        margin: 130px auto 100px auto;
+        width: fit-content;
+        text-align: center;
+        padding: 40px;
+        box-shadow: 0 0 10px 3px gray;
+        border-radius: 20px;
+    }
+    
+    .del-box .links {
+        margin: 0 auto 20px auto;
+        width: fit-content;
+        color: black;
+    }
+    
+    .del-box a {
+        margin: 0 10px;
+        color: black;
+        text-decoration: underline;
+    }
+</style>
+{% endblock content %}

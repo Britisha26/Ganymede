@@ -1,0 +1,50 @@
+{% extends "Client/base.html" %} {% block content %}
+
+<div class="container">
+    <div class="del-box">
+        <div>
+            <h1 style="margin-bottom: 20px;">Delete Profile</h1>
+        </div>
+        <div style="margin-bottom: 20px;">
+            <img src="{{ ag.pic.url }}">
+        </div>
+        <p style="margin-bottom: 8px;">
+            {{ ag.name }}
+        </p>
+        <p>
+            {{ ag.address }}
+        </p>
+        <div>
+            <form method="POST">
+                {% csrf_token %}
+                <h6>Are you sure you want to remove this delivery agent permanently?</h6>
+                <div style="margin-top: 30px; display: flex; justify-content: center;">
+                    <button type="submit" id="b1">Delete</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<style>
+    .container {
+        padding: 100px 0 80px 0;
+    }
+    
+    .del-box {
+        box-shadow: 0 0 10px 3px gray;
+        width: fit-content;
+        padding: 50px;
+        border-radius: 20px;
+        text-align: center;
+        margin: 0 auto;
+    }
+    
+    .del-box img {
+        width: 200px;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 100%;
+    }
+</style>
+{% endblock %}
